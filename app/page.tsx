@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Phone, Mail, MapPin, Clock, Truck, Factory, Shield, DollarSign, Wrench, X } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Truck, Factory, Shield, DollarSign, X } from "lucide-react"
 import Head from "next/head"
 
 export default function LiderBetonPage() {
@@ -72,18 +72,11 @@ export default function LiderBetonPage() {
         "Благодаря закупке сырья напрямую с заводов изготовителей, а также наличию собственного автопарка, своим клиентам мы предлагаем продукцию самого высокого качества по доступной цене.",
     },
     {
-      id: "delivery",
-      title: "Доставка бетона собственным транспортом",
+      id: "delivery-pumps",
+      title: "Доставка собственными бетононасосами",
       icon: Truck,
       description:
-        "Собственный автопарк новых импортных АБС (автобетоносмесителей) позволяет нам доставлять бетон заказчику (до 90 км.) с сохранением его качественных характеристик.",
-    },
-    {
-      id: "pumps",
-      title: "Бетононасосы",
-      icon: Wrench,
-      description:
-        "Собственные бетононасосы (26-52м.) позволяют перекачать большой объём бетона за короткий срок в стесненных условиях. Благодаря этому наши клиенты экономят время и деньги на укладке бетона.",
+        "Собственный автопарк новых импортных АБС (автобетоносмесителей) позволяет нам доставлять бетон заказчику (до 90 км.) с сохранением его качественных характеристик. Собственные бетонососы (26-52м.) позволяют перекачать большой объём бетона за короткий срок в стесненных условиях. Благодаря этому наши клиенты экономят время и деньги на укладке бетона.",
     },
   ]
 
@@ -157,13 +150,12 @@ export default function LiderBetonPage() {
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center">
               <img
-                src="/images/lider-beton-logo-new.png"
+                src="/images/lider-beton-logo-full.png"
                 alt="Лидер Бетон - Бетонный завод в Каневской"
-                className="h-8 w-auto"
+                className="h-10 w-auto"
               />
-              <div className="font-heading font-bold text-lg md:text-xl text-primary">ЛИДЕР БЕТОН</div>
             </div>
             <div className="hidden md:flex space-x-6">
               <button
@@ -195,8 +187,7 @@ export default function LiderBetonPage() {
                 Карта
               </button>
             </div>
-            <div className="flex items-center space-x-1 md:space-x-2">
-              <span className="hidden lg:inline text-sm text-muted-foreground">Лидер Бетон:</span>
+            <div className="flex items-center">
               <a
                 href="tel:89183601010"
                 className="text-accent font-semibold hover:text-accent/80 transition-colors text-sm md:text-base whitespace-nowrap"
@@ -209,17 +200,22 @@ export default function LiderBetonPage() {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="hero-bg min-h-screen flex items-center justify-center text-white">
-        <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center mb-6">
+      <section id="hero" className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/concrete-plant-bg-new.jpg')",
+          }}
+        />
+        <div className="absolute inset-0 bg-blue-900/60" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="flex items-center justify-center mb-6 gap-4">
             <img
               src="/images/lider-beton-logo-new.png"
               alt="Лидер Бетон - Производство бетона в Каневской"
-              className="h-16 md:h-20 w-auto mr-4"
+              className="h-16 md:h-20 w-auto"
             />
-            <h1 className="font-heading text-3xl md:text-6xl lg:text-7xl font-bold text-balance drop-shadow-lg">
-              ЛИДЕР БЕТОН
-            </h1>
+            <h1 className="text-4xl md:text-6xl font-bold text-balance drop-shadow-lg">ЛИДЕР БЕТОН</h1>
           </div>
           <p className="text-xl md:text-2xl mb-2 max-w-4xl mx-auto text-pretty leading-relaxed drop-shadow-md">
             Ведущий производитель бетона для тех, кто ценит качество
@@ -255,40 +251,13 @@ export default function LiderBetonPage() {
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
             Наши преимущества
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto justify-items-center">
-            {advantages.slice(0, 3).map((advantage) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {advantages.map((advantage) => {
               const IconComponent = advantage.icon
               return (
                 <Card
                   key={advantage.id}
-                  className="text-center hover:shadow-lg transition-shadow cursor-pointer flex flex-col h-full w-full max-w-sm"
-                >
-                  <CardHeader>
-                    <div className="mx-auto w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4">
-                      <IconComponent className="h-8 w-8 text-accent" />
-                    </div>
-                    <CardTitle className="text-xl">{advantage.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1 flex flex-col justify-end p-6">
-                    <Button
-                      variant="outline"
-                      className="w-full bg-transparent mt-auto"
-                      onClick={() => setSelectedAdvantage(advantage.id)}
-                    >
-                      Подробнее
-                    </Button>
-                  </CardContent>
-                </Card>
-              )
-            })}
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto justify-items-center mt-8">
-            {advantages.slice(3).map((advantage) => {
-              const IconComponent = advantage.icon
-              return (
-                <Card
-                  key={advantage.id}
-                  className="text-center hover:shadow-lg transition-shadow cursor-pointer flex flex-col h-full w-full max-w-sm"
+                  className="text-center hover:shadow-lg transition-shadow cursor-pointer flex flex-col h-full w-full"
                 >
                   <CardHeader>
                     <div className="mx-auto w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4">
