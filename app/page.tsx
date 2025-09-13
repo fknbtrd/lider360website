@@ -19,10 +19,15 @@ export default function LiderBetonPage() {
   })
 
   const [selectedAdvantage, setSelectedAdvantage] = useState<string | null>(null)
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Formspree обработает отправку автоматически
+    setIsSubmitted(true)
+    setTimeout(() => {
+      setIsSubmitted(false)
+    }, 5000)
   }
 
   const scrollToSection = (sectionId: string) => {
@@ -68,6 +73,65 @@ export default function LiderBetonPage() {
       icon: Truck,
       description:
         "Собственный автопарк новых импортных АБС (автобетоносмесителей) позволяет нам доставлять бетон заказчику (до 90 км.) с сохранением его качественных характеристик. Собственные бетонососы (26-52м.) позволяют перекачать большой объём бетона за короткий срок в стесненных условиях. Благодаря этому наши клиенты экономят время и деньги на укладке бетона.",
+    },
+  ]
+
+  const products = [
+    {
+      id: "m100",
+      title: "Бетон М100",
+      specs: "В7,5 П4 ГОСТ 7473-2010",
+      image: "/images/concrete-m100.png",
+      description:
+        "М100 – используется для объектов, которые в дальнейшем будут подвергаться минимальным нагрузкам\n-для установки и укрепления бордюров;\n-для создания подстилающего слоя тротуаров и пешеходных дорожек, заливка столбов;\n-при изготовлении подстилающего слоя дорожного покрытия, где предполагается -невысокая интенсивность движения и нагрузка транспорта, например, в условиях сельской местности, парковых зон или дачных участков;\n-для подготовительных работ по созданию фундаментов и заливке монолитных плит;\n-в качестве отделки внутренних помещений, в основном технического или хозяйственного назначения;\n-для внешней отделки зданий и сооружений, эксплуатация которых предполагает благоприятные климатические условия;\n-при различных видах ремонта зданий, жилых помещений, различных дорог и инфраструктурных объектов\n\nГлавным достоинством такой смеси является низкая стоимость и достаточная прочность. Мы предлагаем купить бетон М100 для создания защитного выравнивающего слоя под основной фундамент, основание дороги, для укрепления бордюров.",
+    },
+    {
+      id: "m150",
+      title: "Бетон М150",
+      specs: "В12,5 П4 ГОСТ 7473-2010",
+      image: "/images/concrete-m150.png",
+      description:
+        "Несмотря на средние строительные качества, бетон В10 крайне популярен. Это связано с тем, что смесь является отличным материалом для подготовки строительной площадки.\nТакой тип бетона используют:\nперед установкой бордюров;\nперед заливкой садовых дорожек;\nпри заливке стяжки полов;\nдля обработки поверхности под монолитные плиты и фундаменты.\nИтак, бетон М150 играет достаточно важную роль в любом строительстве, обеспечивая устойчивость и прочность поверхности, на которой будет происходить дальнейшее возведение конструкций.",
+    },
+    {
+      id: "m200",
+      title: "Бетон М200",
+      specs: "В15 П4 F75 W2 ГОСТ 7473-2010",
+      image: "/images/concrete-m200.png",
+      description:
+        "Применяется для стяжки и изготовления бетонных полов.\nИспользуется при создании фундаментов зданий. Его используют для строительства загородных домов и дач, т.е. малонагруженных конструкций\nШироко применяется для возведения железобетонных изделий, так как может обеспечить высокие эксплуатационные параметры. Блоки и плиты, изготовленные с помощью такого бетона, не рекомендуется использовать в местах с повышенной нагрузкой, однако, их можно использовать для создания лестниц и подпорных стен.\nПрименяется для возведения площадок, дорожек и других подобных конструкций.\nПрименяется для изготовления дорожных плит, так как превосходно сочетается с металлическим каркасом",
+    },
+    {
+      id: "m250",
+      title: "Бетон М250",
+      specs: "В20 П4 F1OO W2 ГОСТ 7473-2010",
+      image: "/images/concrete-m250.png",
+      description:
+        "М250 положительные качества этого бетона полностью реализуются при проведении таких работ, как:\nзаливка фундаментов для многоэтажных зданий. Конечно, если строго принимать во внимание требования нормативных актов, необходимо использовать бетон более высокой марки. Однако, в случаях ограниченного бюджета, М250 вполне подойдет – его применение не снизит эксплуатационных качеств постройки;\nизготовление элементов зданий, плит или блоков. При использовании готовых конструкций подобного типа можно значительно ускорить строительство;\nпокрытие дорожек или площадок. Бетон В20 имеет крайне высокие показатели износостойкости и сопротивления воздействиям окружающей среды.\nЕсли возникла необходимость в проведении одной из вышеназванных работ, приобрести подходящий тип раствора можно в нашей компании. Цена бетона М-250 с доставкой приятно удивит любого покупателя.",
+    },
+    {
+      id: "m300",
+      title: "Бетон М300",
+      specs: "В22,5 П4 F150 W4 ГОСТ 7473-2010",
+      image: "/images/concrete-m300.png",
+      description:
+        "Бетон М300 имеет высокую прочность, водостойкость, отлично переносит морозы. Все это и определило область его использования. Его применяют:\n-При заливке фундаментов частных домов и коттеджей.\n-Для отмостки вокруг дома.\n-Для садовых дорожек, изготовления самодельных плит для дорожек.\nБетон М300 B22.5 применяется широко как в частном, так и в многоэтажном строительстве\nПри изготовлении бетонных лестниц.\nДля бетонирования площадки под авто.\nДля монолитных стен и перекрытий в многоэтажных домах.",
+    },
+    {
+      id: "m350",
+      title: "Бетон М350",
+      specs: "В25 П4 F200 W6 ГОСТ 7473-2010",
+      image: "/images/concrete-m350.png",
+      description:
+        "Прочность на сжатие позволяет выбирать М350 для возведения ответственных несущих конструкций в многоэтажном и промышленном строительстве. Из него отливают фундаменты (свайные и заглубленные ленточные), монолитные стены, колонны и ж/б балки, воспринимающие повышенные нагрузки.\nХорошо показывает себя в производстве многопустотных ЖБИ, например, плит перекрытия. Из-за внутренних каналов общий вес таких изделий снижается, а применение В25 позволяет компенсировать потерю несущей способности.\nВысокая водонепроницаемость и морозостойкость открывают путь к использованию в строительстве конструкций, испытывающих одновременно и повышенные нагрузки, и влияние экстремальных внешних факторов. Такое сочетание свойств идеально для заливки аэродромных плит, дорог для грузового и спецтранспорта, пролетов мостов.",
+    },
+    {
+      id: "m400",
+      title: "Бетон М400",
+      specs: "В30 П4 F300 W8 ГОСТ 7473-2010",
+      image: "/images/concrete-m400.png",
+      description:
+        "Железнодорожные мосты, автомобильные эстакады, виадуки, путепроводы и пр.\nСтроительство банковских хранилищ.\nПроизводство несущих элементов: колонн, свай, арок, ригелей, перемычек, балок и пр.\nСтроительство гидротехнических сооружений: коллекторов, шлюзов, бассейнов, плотин, волнорезов и прочих объектов специального назначения.\nСтроительство монолитных многоэтажных зданий и производство ответственных ЖБИ.\nОбустройство всех типов фундаментов (ленточные, свайные, плитные)",
     },
   ]
 
@@ -138,12 +202,15 @@ export default function LiderBetonPage() {
       </Head>
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
+      <nav
+        className="fixed top-0 w-full backdrop-blur-sm border-b border-border z-50"
+        style={{ backgroundColor: "#FFFFFF" }}
+      >
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <img
-                src="/images/lider-beton-logo-full.png"
+                src="/images/lider-beton-logo-header.png"
                 alt="Лидер Бетон - Бетонный завод в Каневской"
                 className="h-10 w-auto"
               />
@@ -162,6 +229,13 @@ export default function LiderBetonPage() {
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 Преимущества
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollToSection("products")}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Продукция
               </button>
               <button
                 type="button"
@@ -272,6 +346,78 @@ export default function LiderBetonPage() {
         </div>
       </section>
 
+      {/* Products Section */}
+      <section id="products" className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">Наша продукция</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {products.map((product) => (
+              <Card
+                key={product.id}
+                className="text-center hover:shadow-lg transition-shadow cursor-pointer flex flex-col h-full"
+              >
+                <CardHeader>
+                  <div className="mx-auto w-16 h-16 rounded-lg overflow-hidden mb-4 bg-gray-100 flex items-center justify-center">
+                    <img
+                      src={product.image || "/placeholder.svg"}
+                      alt={product.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <CardTitle className="text-lg">{product.title}</CardTitle>
+                  <p className="text-sm text-muted-foreground font-medium">{product.specs}</p>
+                </CardHeader>
+                <CardContent className="flex-1 flex flex-col justify-end p-6 gap-2">
+                  <Button
+                    variant="outline"
+                    className="w-full bg-transparent"
+                    onClick={() => setSelectedProduct(product.id)}
+                  >
+                    Область применения
+                  </Button>
+                  <Button variant="default" className="w-full" onClick={() => scrollToSection("contact")}>
+                    Задать вопрос
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product Modal */}
+      {selectedProduct && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-background rounded-lg max-w-3xl w-full max-h-[80vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <h3 className="text-2xl font-bold text-primary mb-2">
+                    {products.find((p) => p.id === selectedProduct)?.title}
+                  </h3>
+                  <p className="text-lg text-muted-foreground font-medium">
+                    {products.find((p) => p.id === selectedProduct)?.specs}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setSelectedProduct(null)}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+              <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                {products.find((p) => p.id === selectedProduct)?.description}
+              </div>
+              <div className="mt-6 flex justify-end">
+                <Button onClick={() => setSelectedProduct(null)}>Закрыть</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Advantage Modal */}
       {selectedAdvantage && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-background rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
@@ -306,27 +452,45 @@ export default function LiderBetonPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-6">Свяжитесь с нами</h3>
-                <form action="https://formspree.io/f/xvgbyrdy" method="POST" className="space-y-4">
-                  <div>
-                    <Label htmlFor="name">Имя</Label>
-                    <Input id="name" name="name" type="text" required placeholder="Ваше имя" />
+                {isSubmitted ? (
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+                    <div className="text-green-600 text-lg font-semibold mb-2">Сообщение отправлено!</div>
+                    <p className="text-green-700">Мы свяжемся с Вами в течение рабочего дня</p>
                   </div>
-                  <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" name="email" type="email" required placeholder="your@email.com" />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone">Телефон</Label>
-                    <Input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" />
-                  </div>
-                  <div>
-                    <Label htmlFor="message">Сообщение</Label>
-                    <Textarea id="message" name="message" placeholder="Ваш комментарий или вопрос" rows={4} required />
-                  </div>
-                  <Button type="submit" className="w-full">
-                    Отправить сообщение
-                  </Button>
-                </form>
+                ) : (
+                  <form
+                    action="https://formspree.io/f/xvgbyrdy"
+                    method="POST"
+                    className="space-y-4"
+                    onSubmit={handleSubmit}
+                  >
+                    <div>
+                      <Label htmlFor="name">Имя</Label>
+                      <Input id="name" name="name" type="text" required placeholder="Ваше имя" />
+                    </div>
+                    <div>
+                      <Label htmlFor="email">Email</Label>
+                      <Input id="email" name="email" type="email" required placeholder="your@email.com" />
+                    </div>
+                    <div>
+                      <Label htmlFor="phone">Телефон</Label>
+                      <Input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" />
+                    </div>
+                    <div>
+                      <Label htmlFor="message">Сообщение</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        placeholder="Ваш комментарий или вопрос"
+                        rows={4}
+                        required
+                      />
+                    </div>
+                    <Button type="submit" className="w-full">
+                      Отправить сообщение
+                    </Button>
+                  </form>
+                )}
               </div>
 
               <div>
