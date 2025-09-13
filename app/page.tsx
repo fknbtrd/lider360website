@@ -22,16 +22,7 @@ export default function LiderBetonPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = encodeURIComponent("Заявка с сайта Лидер Бетон")
-    const body = encodeURIComponent(`
-Имя: ${formData.name}
-Телефон: ${formData.phone}
-Комментарий: ${formData.message}
-    `)
-    window.location.href = `mailto:lider360@bk.ru?subject=${subject}&body=${body}`
-
-    alert("Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.")
-    setFormData({ name: "", phone: "", message: "" })
+    // Formspree обработает отправку автоматически
   }
 
   const scrollToSection = (sectionId: string) => {
@@ -85,7 +76,7 @@ export default function LiderBetonPage() {
     "@type": "LocalBusiness",
     name: "Лидер Бетон",
     description:
-      "Производство и доставка бетона всех марок в Каневской. Бетонный завод с собственным автопарком миксеров и бетононасосов.",
+      "Производство и доставка бетона всех марок в Каневской. Бетонный завод с собственным автопарком миксеров и бетонососов.",
     url: "https://lider-beton.vercel.app",
     telephone: "+7-918-360-10-10",
     email: "lider360@bk.ru",
@@ -315,38 +306,22 @@ export default function LiderBetonPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-6">Свяжитесь с нами</h3>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form action="https://formspree.io/f/xvgbyrdy" method="POST" className="space-y-4">
                   <div>
                     <Label htmlFor="name">Имя</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                      placeholder="Ваше имя"
-                    />
+                    <Input id="name" name="name" type="text" required placeholder="Ваше имя" />
+                  </div>
+                  <div>
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" name="email" type="email" required placeholder="your@email.com" />
                   </div>
                   <div>
                     <Label htmlFor="phone">Телефон</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      required
-                      placeholder="+7 (___) ___-__-__"
-                    />
+                    <Input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" />
                   </div>
                   <div>
-                    <Label htmlFor="message">Комментарий</Label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Ваш комментарий или вопрос"
-                      rows={4}
-                    />
+                    <Label htmlFor="message">Сообщение</Label>
+                    <Textarea id="message" name="message" placeholder="Ваш комментарий или вопрос" rows={4} required />
                   </div>
                   <Button type="submit" className="w-full">
                     Отправить сообщение
