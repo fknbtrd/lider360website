@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -20,14 +18,6 @@ export default function LiderBetonPage() {
 
   const [selectedAdvantage, setSelectedAdvantage] = useState<string | null>(null)
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    setIsSubmitted(true)
-    setTimeout(() => {
-      setIsSubmitted(false)
-    }, 5000)
-  }
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -142,7 +132,7 @@ export default function LiderBetonPage() {
       "Производство и доставка бетона всех марок в Каневской. Бетонный завод с собственным автопарком миксеров и бетонососов.",
     url: "https://lider-beton.vercel.app",
     telephone: "+7-918-360-10-10",
-    email: "lider360@bk.ru",
+    email: "fknbtrd@gmail.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "ул. Широкая, д. 247",
@@ -456,45 +446,27 @@ export default function LiderBetonPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-6">Свяжитесь с нами</h3>
-                {isSubmitted ? (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-                    <div className="text-green-600 text-lg font-semibold mb-2">Сообщение отправлено!</div>
-                    <p className="text-green-700">Мы свяжемся с Вами в течение рабочего дня</p>
+                <form action="https://formspree.io/f/xldwkrql" method="POST" className="space-y-4">
+                  <div>
+                    <Label htmlFor="name">Имя</Label>
+                    <Input id="name" name="name" type="text" required placeholder="Ваше имя" />
                   </div>
-                ) : (
-                  <form
-                    action="https://formspree.io/f/xvgbyrdy"
-                    method="POST"
-                    className="space-y-4"
-                    onSubmit={handleSubmit}
-                  >
-                    <div>
-                      <Label htmlFor="name">Имя</Label>
-                      <Input id="name" name="name" type="text" required placeholder="Ваше имя" />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" name="email" type="email" required placeholder="your@email.com" />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone">Телефон</Label>
-                      <Input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" />
-                    </div>
-                    <div>
-                      <Label htmlFor="message">Сообщение</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        placeholder="Ваш комментарий или вопрос"
-                        rows={4}
-                        required
-                      />
-                    </div>
-                    <Button type="submit" className="w-full">
-                      Отправить сообщение
-                    </Button>
-                  </form>
-                )}
+                  <div>
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" name="email" type="email" required placeholder="your@email.com" />
+                  </div>
+                  <div>
+                    <Label htmlFor="phone">Телефон</Label>
+                    <Input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" />
+                  </div>
+                  <div>
+                    <Label htmlFor="message">Сообщение</Label>
+                    <Textarea id="message" name="message" placeholder="Ваш комментарий или вопрос" rows={4} required />
+                  </div>
+                  <Button type="submit" className="w-full">
+                    Отправить сообщение
+                  </Button>
+                </form>
               </div>
 
               <div>
@@ -519,10 +491,10 @@ export default function LiderBetonPage() {
                     <div>
                       <h4 className="font-semibold text-lg">Email</h4>
                       <a
-                        href="mailto:lider360@bk.ru"
+                        href="mailto:fknbtrd@gmail.com"
                         className="text-accent hover:text-accent/80 transition-colors text-lg"
                       >
-                        lider360@bk.ru
+                        fknbtrd@gmail.com
                       </a>
                     </div>
                   </div>
