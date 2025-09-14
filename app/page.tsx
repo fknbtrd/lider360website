@@ -23,7 +23,6 @@ export default function LiderBetonPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
     setIsSubmitted(true)
     setTimeout(() => {
       setIsSubmitted(false)
