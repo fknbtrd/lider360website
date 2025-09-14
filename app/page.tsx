@@ -212,7 +212,7 @@ export default function LiderBetonPage() {
               <img
                 src="/images/lider-beton-logo-header.png"
                 alt="Лидер Бетон - Бетонный завод в Каневской"
-                className="h-10 w-auto"
+                className="h-5 md:h-10 w-auto"
               />
             </div>
             <div className="hidden md:flex space-x-6">
@@ -280,7 +280,7 @@ export default function LiderBetonPage() {
               alt="Лидер Бетон - Производство бетона в Каневской"
               className="h-16 md:h-20 w-auto"
             />
-            <h1 className="text-4xl md:text-6xl font-bold text-balance drop-shadow-lg">ЛИДЕР БЕТОН</h1>
+            <h1 className="text-2xl md:text-6xl font-bold text-balance drop-shadow-lg">ЛИДЕР БЕТОН</h1>
           </div>
           <p className="text-xl md:text-2xl mb-2 max-w-4xl mx-auto text-pretty leading-relaxed drop-shadow-md">
             Ведущий производитель бетона для тех, кто ценит качество
@@ -408,6 +408,11 @@ export default function LiderBetonPage() {
               </div>
               <div className="text-muted-foreground leading-relaxed whitespace-pre-line">
                 {products.find((p) => p.id === selectedProduct)?.description}
+              </div>
+              <div className="mt-4 pt-4 border-t border-border">
+                <p className="text-sm text-muted-foreground italic text-center">
+                  Информация носит исключительно информационный характер и не является рекомендацией
+                </p>
               </div>
               <div className="mt-6 flex justify-end">
                 <Button onClick={() => setSelectedProduct(null)}>Закрыть</Button>
