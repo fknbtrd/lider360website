@@ -90,7 +90,7 @@ export default function LiderBetonPage() {
       title: "Соблюдение требований и норм ГОСТа",
       icon: ({ className }: { className?: string }) => (
         <div
-          className={`${className} flex items-center justify-center font-bold text-xs bg-accent text-white rounded px-1`}
+          className={`${className} flex items-center justify-center font-bold text-xs bg-accent text-white rounded px-6`}
         >
           ГОСТ
         </div>
@@ -109,7 +109,11 @@ export default function LiderBetonPage() {
       id: "delivery-transport",
       title: "Доставка собственным транспортом",
       icon: ({ className }: { className?: string }) => (
-        <img src="/images/concrete-mixer-icon.png" alt="Бетономешалка" className={`${className} object-contain`} />
+        <img
+          src="/images/concrete-mixer-icon-white.png"
+          alt="Бетономешалка"
+          className={`${className} h-15 w-15 object-contain`}
+        />
       ),
       description:
         "Собственный автопарк новых импортных АБС (автобетоносмесителей) позволяет нам доставлять бетон заказчику (до 90 км.) с сохранением его качественных характеристик. Собственные бетонососы (26-52м.) позволяют перекачать большой объём бетона за короткий срок в стесненных условиях. Благодаря этому наши клиенты экономят время и деньги на укладке бетона.",
