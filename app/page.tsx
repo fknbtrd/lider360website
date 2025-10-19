@@ -2,13 +2,257 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, memo } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Phone, Mail, MapPin, Clock, Factory, DollarSign, X } from "lucide-react"
+
+const ConcreteMixerIcon = memo(({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 64 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    aria-label="Бетономешалка"
+  >
+    {/* Кабина водителя */}
+    <g>
+      {/* Основная часть кабины */}
+      <path
+        d="M 4 30 L 4 42 L 8 42 L 8 44 L 18 44 L 18 42 L 20 42 L 20 30 L 18 28 L 6 28 Z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="0.5"
+      />
+      {/* Лобовое стекло */}
+      <path d="M 6 28 L 8 26 L 16 26 L 18 28 Z" fill="currentColor" opacity="0.9" />
+      {/* Окна кабины */}
+      <rect x="6.5" y="31" width="4" height="5" fill="white" opacity="0.6" rx="0.5" />
+      <rect x="11.5" y="31" width="4" height="5" fill="white" opacity="0.6" rx="0.5" />
+      <rect x="16.5" y="31" width="2" height="5" fill="white" opacity="0.6" rx="0.5" />
+      {/* Дверь */}
+      <line x1="10.5" y1="36" x2="10.5" y2="42" stroke="currentColor" strokeWidth="0.8" opacity="0.4" />
+      {/* Зеркало */}
+      <rect x="3" y="32" width="1.5" height="2" fill="currentColor" opacity="0.7" rx="0.3" />
+    </g>
+
+    {/* Барабан бетономешалки - вытянутый цилиндр с наклоном 15° и бочкообразной формой */}
+    <g>
+      {/* Задняя торцевая часть барабана (эллипс слева, ниже) */}
+      <ellipse cx="25" cy="32" rx="4.5" ry="8" fill="currentColor" opacity="0.8" />
+
+      {/* Основной корпус барабана - бочкообразная форма (шире в центре, уже по краям) */}
+      {/* Используем path для создания реалистичной формы с наклоном */}
+      <path
+        d="M 25 24 
+           C 28 23, 32 22, 36 21.5
+           C 40 21, 44 20.5, 47 20
+           L 47 32
+           C 44 32.5, 40 33, 36 33.5
+           C 32 34, 28 35, 25 36
+           Z"
+        fill="currentColor"
+        opacity="0.9"
+      />
+
+      {/* Нижняя часть барабана */}
+      <path
+        d="M 25 40
+           C 28 41, 32 42, 36 42.5
+           C 40 43, 44 43.5, 47 32
+           L 47 32
+           C 44 32.5, 40 33, 36 33.5
+           C 32 34, 28 35, 25 36
+           Z"
+        fill="currentColor"
+        opacity="0.85"
+      />
+
+      {/* Центральная выпуклая часть для объема (самая широкая часть) */}
+      <ellipse cx="36" cy="31" rx="9" ry="12" fill="currentColor" opacity="0.75" />
+
+      {/* Передняя торцевая часть барабана (эллипс справа, выше из-за наклона) */}
+      <ellipse cx="47" cy="26" rx="4.5" ry="7" fill="currentColor" opacity="0.7" />
+
+      {/* Спиральные лопасти внутри барабана */}
+      <path
+        d="M 27 26 Q 33 24.5 39 23.5"
+        stroke="white"
+        strokeWidth="1.2"
+        fill="none"
+        opacity="0.25"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 27 32 Q 33 30.5 39 29.5"
+        stroke="white"
+        strokeWidth="1.2"
+        fill="none"
+        opacity="0.25"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 27 38 Q 33 36.5 39 35.5"
+        stroke="white"
+        strokeWidth="1.2"
+        fill="none"
+        opacity="0.25"
+        strokeLinecap="round"
+      />
+
+      {/* Ребра жесткости барабана */}
+      <line x1="30" y1="25" x2="30" y2="39" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
+      <line x1="36" y1="23" x2="36" y2="37" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
+      <line x1="42" y1="21" x2="42" y2="35" stroke="currentColor" strokeWidth="0.6" opacity="0.3" />
+
+      {/* Центральная ось барабана */}
+      <rect x="35" y="16" width="3" height="8" fill="currentColor" opacity="0.8" rx="1.5" />
+      <circle cx="36.5" cy="16" r="2.5" fill="currentColor" opacity="0.9" />
+    </g>
+
+    {/* Рама грузовика */}
+    <g>
+      <rect x="18" y="43" width="38" height="2.5" fill="currentColor" rx="0.5" />
+      <rect x="20" y="44" width="2" height="3" fill="currentColor" opacity="0.7" />
+      <rect x="30" y="44" width="2" height="3" fill="currentColor" opacity="0.7" />
+      <rect x="40" y="44" width="2" height="3" fill="currentColor" opacity="0.7" />
+      <rect x="50" y="44" width="2" height="3" fill="currentColor" opacity="0.7" />
+    </g>
+
+    {/* Трехосное шасси */}
+    <g>
+      {/* Переднее колесо */}
+      <g>
+        <circle cx="12" cy="50" r="6" fill="currentColor" />
+        <circle cx="12" cy="50" r="4.5" fill="#333" />
+        <circle cx="12" cy="50" r="3" fill="white" opacity="0.2" />
+        <circle cx="12" cy="50" r="1.8" fill="currentColor" />
+        <line x1="12" y1="46" x2="12" y2="54" stroke="white" strokeWidth="0.5" opacity="0.3" />
+        <line x1="8" y1="50" x2="16" y2="50" stroke="white" strokeWidth="0.5" opacity="0.3" />
+      </g>
+
+      {/* Среднее заднее колесо */}
+      <g>
+        <circle cx="42" cy="50" r="6" fill="currentColor" />
+        <circle cx="42" cy="50" r="4.5" fill="#333" />
+        <circle cx="42" cy="50" r="3" fill="white" opacity="0.2" />
+        <circle cx="42" cy="50" r="1.8" fill="currentColor" />
+        <line x1="42" y1="46" x2="42" y2="54" stroke="white" strokeWidth="0.5" opacity="0.3" />
+        <line x1="38" y1="50" x2="46" y2="50" stroke="white" strokeWidth="0.5" opacity="0.3" />
+      </g>
+
+      {/* Заднее колесо */}
+      <g>
+        <circle cx="52" cy="50" r="6" fill="currentColor" />
+        <circle cx="52" cy="50" r="4.5" fill="#333" />
+        <circle cx="52" cy="50" r="3" fill="white" opacity="0.2" />
+        <circle cx="52" cy="50" r="1.8" fill="currentColor" />
+        <line x1="52" y1="46" x2="52" y2="54" stroke="white" strokeWidth="0.5" opacity="0.3" />
+        <line x1="48" y1="50" x2="56" y2="50" stroke="white" strokeWidth="0.5" opacity="0.3" />
+      </g>
+
+      {/* Подвеска задних колес */}
+      <rect x="40" y="47" width="14" height="1.5" fill="currentColor" opacity="0.6" rx="0.5" />
+    </g>
+
+    {/* Желоб для выгрузки */}
+    <g>
+      <path
+        d="M 48 30 L 56 24 L 58 24 L 58 28 L 50 34 Z"
+        fill="currentColor"
+        opacity="0.85"
+        stroke="currentColor"
+        strokeWidth="0.5"
+      />
+      <ellipse cx="57" cy="26" rx="1.5" ry="2" fill="currentColor" opacity="0.9" />
+      <rect x="47" y="31" width="2" height="3" fill="currentColor" opacity="0.7" rx="0.5" />
+    </g>
+
+    {/* Гидравлические опоры */}
+    <g>
+      <rect x="26" y="38" width="2" height="6" fill="currentColor" opacity="0.7" rx="0.5" />
+      <rect x="44" y="32" width="2" height="12" fill="currentColor" opacity="0.7" rx="0.5" />
+      <circle cx="27" cy="38" r="1.5" fill="currentColor" opacity="0.8" />
+      <circle cx="45" cy="32" r="1.5" fill="currentColor" opacity="0.8" />
+    </g>
+
+    {/* Фары */}
+    <g>
+      <circle cx="5" cy="42" r="1.2" fill="yellow" opacity="0.8" />
+      <circle cx="19" cy="42" r="1.2" fill="red" opacity="0.6" />
+    </g>
+  </svg>
+))
+
+ConcreteMixerIcon.displayName = "ConcreteMixerIcon"
+
+const AdvantageCard = memo(({ advantage, onClick }: { advantage: any; onClick: () => void }) => {
+  const IconComponent = advantage.icon
+  return (
+    <Card className="text-center hover:shadow-lg transition-shadow cursor-pointer flex flex-col h-full w-full">
+      <CardHeader>
+        <div className="mx-auto w-20 h-20 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+          {typeof IconComponent === "function" ? (
+            <IconComponent className="h-12 w-12 text-accent" />
+          ) : (
+            <IconComponent className="h-12 w-12 text-accent" />
+          )}
+        </div>
+        <CardTitle className="text-xl">{advantage.title}</CardTitle>
+      </CardHeader>
+      <CardContent className="flex-1 flex flex-col justify-end p-6">
+        <Button variant="outline" className="w-full bg-transparent mt-auto" onClick={onClick}>
+          Подробнее
+        </Button>
+      </CardContent>
+    </Card>
+  )
+})
+
+AdvantageCard.displayName = "AdvantageCard"
+
+const ProductCard = memo(
+  ({
+    product,
+    onApplicationClick,
+    onQuestionClick,
+  }: {
+    product: any
+    onApplicationClick: () => void
+    onQuestionClick: () => void
+  }) => (
+    <Card className="text-center hover:shadow-lg transition-shadow cursor-pointer flex flex-col h-full">
+      <CardHeader>
+        <div className="mx-auto w-32 h-32 rounded-lg overflow-hidden mb-4 bg-gray-100 flex items-center justify-center relative">
+          <Image
+            src={product.image || "/placeholder.svg"}
+            alt={product.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover"
+            loading="lazy"
+          />
+        </div>
+        <CardTitle className="text-lg">{product.title}</CardTitle>
+        <p className="text-sm text-muted-foreground font-medium">{product.specs}</p>
+      </CardHeader>
+      <CardContent className="flex-1 flex flex-col justify-end p-6 gap-2">
+        <Button variant="outline" className="w-full bg-transparent" onClick={onApplicationClick}>
+          Область применения
+        </Button>
+        <Button variant="default" className="w-full" onClick={onQuestionClick}>
+          Задать вопрос
+        </Button>
+      </CardContent>
+    </Card>
+  ),
+)
+
+ProductCard.displayName = "ProductCard"
 
 export default function LiderBetonPage() {
   const [formData, setFormData] = useState({
@@ -107,13 +351,7 @@ export default function LiderBetonPage() {
     {
       id: "delivery-transport",
       title: "Доставка собственным транспортом",
-      icon: ({ className }: { className?: string }) => (
-        <img
-          src="/images/concrete-mixer-icon-white.png"
-          alt="Бетономешалка"
-          className={`${className} h-15 w-15 object-contain`}
-        />
-      ),
+      icon: ConcreteMixerIcon,
       description:
         "Собственный автопарк новых импортных АБС (автобетоносмесителей) позволяет нам доставлять бетон заказчику (до 90 км.) с сохранением его качественных характеристик. Собственные бетонососы (26-52м.) позволяют перекачать большой объём бетона за короткий срок в стесненных условиях. Благодаря этому наши клиенты экономят время и деньги на укладке бетона.",
     },
@@ -251,11 +489,16 @@ export default function LiderBetonPage() {
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <img
-                src="/images/lider-beton-logo-header.png"
-                alt="Лидер Бетон - Бетонный завод в Каневской"
-                className="h-6 md:h-8 w-auto"
-              />
+              <div className="relative h-6 w-32 md:h-8 md:w-48">
+                <Image
+                  src="/images/lider-beton-logo-header.png"
+                  alt="Лидер Бетон - Бетонный завод в Каневской"
+                  fill
+                  sizes="(max-width: 768px) 128px, 192px"
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </div>
             <div className="hidden md:flex space-x-6">
               <button
@@ -295,24 +538,34 @@ export default function LiderBetonPage() {
 
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/concrete-plant-bg-new.jpg')",
-          }}
-        />
+        <div className="absolute inset-0">
+          <Image
+            src="/images/concrete-plant-bg-new.jpg"
+            alt="Бетонный завод Лидер Бетон"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+            quality={85}
+          />
+        </div>
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-blue-900/60 md:mx-32 md:my-40 md:border-4 md:border-blue-800" />
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="flex items-center justify-center mb-6 gap-4">
-            <img
-              src="/images/lider-beton-logo-new.png"
-              alt="Лидер Бетон - Производство бетона в Каневской"
-              className="h-22 md:h-32 w-auto"
-            />
+            <div className="relative h-16 w-16 md:h-32 md:w-32">
+              <Image
+                src="/images/lider-beton-logo-new.png"
+                alt="Лидер Бетон - Производство бетона в Каневской"
+                fill
+                sizes="(max-width: 768px) 64px, 128px"
+                className="object-contain"
+                priority
+              />
+            </div>
             <h1
-              className="text-3xl sm:text-5xl md:text-8xl font-bold text-balance drop-shadow-lg leading-tight"
+              className="text-2xl sm:text-4xl md:text-8xl font-bold text-balance drop-shadow-lg leading-tight"
               style={{
                 filter:
                   "drop-shadow(2px 2px 0px #1e3a8a) drop-shadow(-2px -2px 0px #1e3a8a) drop-shadow(2px -2px 0px #1e3a8a) drop-shadow(-2px 2px 0px #1e3a8a)",
@@ -357,35 +610,13 @@ export default function LiderBetonPage() {
             Наши преимущества
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {advantages.map((advantage) => {
-              const IconComponent = advantage.icon
-              return (
-                <Card
-                  key={advantage.id}
-                  className="text-center hover:shadow-lg transition-shadow cursor-pointer flex flex-col h-full w-full"
-                >
-                  <CardHeader>
-                    <div className="mx-auto w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4">
-                      {typeof IconComponent === "function" ? (
-                        <IconComponent className="h-8 w-8 text-accent" />
-                      ) : (
-                        <IconComponent className="h-8 w-8 text-accent" />
-                      )}
-                    </div>
-                    <CardTitle className="text-xl">{advantage.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1 flex flex-col justify-end p-6">
-                    <Button
-                      variant="outline"
-                      className="w-full bg-transparent mt-auto"
-                      onClick={() => setSelectedAdvantage(advantage.id)}
-                    >
-                      Подробнее
-                    </Button>
-                  </CardContent>
-                </Card>
-              )
-            })}
+            {advantages.map((advantage) => (
+              <AdvantageCard
+                key={advantage.id}
+                advantage={advantage}
+                onClick={() => setSelectedAdvantage(advantage.id)}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -396,34 +627,12 @@ export default function LiderBetonPage() {
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">Наша продукция</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {products.map((product) => (
-              <Card
+              <ProductCard
                 key={product.id}
-                className="text-center hover:shadow-lg transition-shadow cursor-pointer flex flex-col h-full"
-              >
-                <CardHeader>
-                  <div className="mx-auto w-32 h-32 rounded-lg overflow-hidden mb-4 bg-gray-100 flex items-center justify-center">
-                    <img
-                      src={product.image || "/placeholder.svg"}
-                      alt={product.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <CardTitle className="text-lg">{product.title}</CardTitle>
-                  <p className="text-sm text-muted-foreground font-medium">{product.specs}</p>
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col justify-end p-6 gap-2">
-                  <Button
-                    variant="outline"
-                    className="w-full bg-transparent"
-                    onClick={() => setSelectedProduct(product.id)}
-                  >
-                    Область применения
-                  </Button>
-                  <Button variant="default" className="w-full" onClick={() => scrollToSection("contact")}>
-                    Задать вопрос
-                  </Button>
-                </CardContent>
-              </Card>
+                product={product}
+                onApplicationClick={() => setSelectedProduct(product.id)}
+                onQuestionClick={() => scrollToSection("contact")}
+              />
             ))}
           </div>
         </div>
