@@ -11,51 +11,56 @@ const inter = Inter({
   subsets: ["latin", "cyrillic"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 })
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
   variable: "--font-montserrat",
   display: "swap",
+  preload: true,
 })
 
 export const metadata: Metadata = {
-  title: "Лидер Бетон - Производство и доставка бетона всех марок в Каневской | Бетонный завод",
+  title: "Производство бетона в Каневской | Доставка по Краснодарскому краю | ЛидерБетон360",
   description:
-    "Бетон с доставкой от производителя в Каневской. Марки М100, М150, М200, М250, М300, М350. Товарный бетон для фундамента, стяжки, строительства. Работаем по ГОСТу. Цена бетона с доставкой по Каневской и окрестностям до 90 км.",
+    "Бетон с доставкой в станице Каневской и по Краю. Цена от производителя, миксеры любой вместимости. Рассчитайте стоимость бетона М300, М200 для фундамента прямо сейчас.",
   keywords:
-    "бетон каневская, бетонный завод каневская, купить бетон каневская, бетон с доставкой, бетон от производителя, товарный бетон, бетон М100, бетон М150, бетон М200, бетон М250, бетон М300, бетон М350, бетон для фундамента, марка бетона для фундамента, цена бетона с доставкой, заказать щебень, как рассчитать объем бетона, строительные растворы, тощий бетон, бетон для стяжки",
-  authors: [{ name: "Лидер Бетон" }],
-  creator: "Лидер Бетон",
-  publisher: "Лидер Бетон",
+    "бетон каневская, бетонный завод каневская, купить бетон каневская, бетон с доставкой каневская, бетон от производителя, товарный бетон, бетон М100, бетон М150, бетон М200, бетон М250, бетон М300, бетон М350, бетон для фундамента, цена бетона с доставкой, заказать бетон каневская, краснодарский край",
+  authors: [{ name: "ЛидерБетон360" }],
+  creator: "ЛидерБетон360",
+  publisher: "ЛидерБетон360",
   robots: "index, follow",
   openGraph: {
-    title: "Лидер Бетон - Бетонный завод в Каневской | Доставка бетона всех марок",
-    description:
-      "Производство и доставка качественного бетона в Каневской. Марки М100-М350. Собственный автопарк миксеров. Работаем по ГОСТу с 2008 года.",
-    url: "https://lider-beton.vercel.app",
-    siteName: "Лидер Бетон",
+    title: "Производство бетона в Каневской | Доставка по Краснодарскому краю | ЛидерБетон360",
+    description: "Бетон с доставкой в станице Каневской и по Краю. Цена от производителя, миксеры любой вместимости.",
+    url: "https://liderbeton360.ru",
+    siteName: "ЛидерБетон360",
     locale: "ru_RU",
     type: "website",
     images: [
       {
-        url: "/images/concrete-plant.png",
+        url: "/images/concrete-plant-bg-new.jpg",
         width: 1200,
         height: 630,
-        alt: "Бетонный завод Лидер Бетон в Каневской",
+        alt: "Бетонный завод ЛидерБетон360 в Каневской",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Лидер Бетон - Бетонный завод в Каневской",
-    description: "Производство и доставка бетона всех марок. Работаем по ГОСТу.",
-    images: ["/images/concrete-plant.png"],
+    title: "Производство бетона в Каневской | ЛидерБетон360",
+    description: "Бетон с доставкой в станице Каневской и по Краснодарскому краю.",
+    images: ["/images/concrete-plant-bg-new.jpg"],
   },
   alternates: {
-    canonical: "https://lider-beton.vercel.app",
+    canonical: "https://liderbeton360.ru",
   },
-  generator: "v0.app",
+  verification: {
+    google: "google0f75360bd88b39a0",
+    yandex: "7134ed7c0457b85b",
+  },
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -65,6 +70,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              name: "ЛидерБетон360",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "станица Каневская",
+                addressRegion: "Краснодарский край",
+                streetAddress: "ул. Широкая, д. 247",
+                addressCountry: "RU",
+              },
+              telephone: "+7-918-360-10-10",
+              areaServed: "Краснодарский край",
+              description: "Производство и доставка бетона в станице Каневской и по Краснодарскому краю.",
+              url: "https://liderbeton360.ru",
+              openingHours: "Mo-Sa 08:00-18:00",
+              priceRange: "$$",
+            }),
+          }}
+        />
+      </head>
       <body className={`font-sans ${inter.variable} ${montserrat.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <Suspense fallback={null}>{children}</Suspense>

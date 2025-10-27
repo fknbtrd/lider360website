@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Phone, Mail, MapPin, Clock, Factory, DollarSign, X } from "lucide-react"
-import Head from "next/head"
 
 const ConcreteMixerIcon = ({ className }: { className?: string }) => (
   <svg
@@ -17,35 +16,71 @@ const ConcreteMixerIcon = ({ className }: { className?: string }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
-    aria-label="Автомобиль-бетономешалка"
+    aria-label="Автомобиль-бетономешалка для доставки бетона в Каневской"
   >
+    {/* Светло-голубой круг фона */}
+    <circle cx="32" cy="32" r="28" fill="currentColor" opacity="0.15" />
+
+    {/* Упрощенный силуэт бетономешалки */}
     {/* Кабина */}
-    <rect x="8" y="38" width="12" height="10" fill="currentColor" rx="1" />
-    <rect x="10" y="40" width="4" height="4" fill="white" opacity="0.3" />
-    <rect x="15" y="40" width="3" height="4" fill="white" opacity="0.3" />
+    <path
+      d="M 12 36 L 12 42 L 20 42 L 20 36 Z"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
+    />
 
-    {/* Рама */}
-    <rect x="8" y="48" width="48" height="3" fill="currentColor" />
+    {/* Барабан - упрощенная форма */}
+    <ellipse cx="38" cy="32" rx="16" ry="12" fill="currentColor" opacity="0.9" />
 
-    {/* Барабан - цилиндрическая форма */}
-    <ellipse cx="38" cy="30" rx="14" ry="8" fill="currentColor" />
-    <rect x="24" y="30" width="28" height="8" fill="currentColor" />
-    <ellipse cx="38" cy="38" rx="14" ry="8" fill="currentColor" opacity="0.8" />
+    {/* Спиральная полоса на барабане */}
+    <path
+      d="M 24 32 Q 38 28 52 32"
+      stroke="currentColor"
+      strokeWidth="2"
+      opacity="0.5"
+      fill="none"
+      strokeLinecap="round"
+    />
 
-    {/* Спиральные полосы на барабане */}
-    <path d="M 26 32 Q 38 34 50 32" stroke="white" strokeWidth="1.5" opacity="0.4" fill="none" />
-    <path d="M 26 36 Q 38 38 50 36" stroke="white" strokeWidth="1.5" opacity="0.4" fill="none" />
+    {/* Рама/шасси */}
+    <line x1="12" y1="42" x2="52" y2="42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
 
-    {/* Желоб для выгрузки */}
-    <path d="M 52 34 L 58 40 L 56 42 L 50 36 Z" fill="currentColor" opacity="0.9" />
+    {/* Колеса - упрощенные */}
+    <circle cx="16" cy="46" r="4" fill="currentColor" />
+    <circle cx="16" cy="46" r="2" fill="white" opacity="0.3" />
 
-    {/* Колеса - трехосное шасси: 1 спереди, 2 сзади */}
-    <circle cx="14" cy="52" r="4" fill="#333" />
-    <circle cx="14" cy="52" r="2.5" fill="#666" />
-    <circle cx="42" cy="52" r="4" fill="#333" />
-    <circle cx="42" cy="52" r="2.5" fill="#666" />
-    <circle cx="50" cy="52" r="4" fill="#333" />
-    <circle cx="50" cy="52" r="2.5" fill="#666" />
+    <circle cx="44" cy="46" r="4" fill="currentColor" />
+    <circle cx="44" cy="46" r="2" fill="white" opacity="0.3" />
+  </svg>
+)
+
+const GostIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 80 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    aria-label="ГОСТ сертификация бетона"
+  >
+    {/* Бирюзовый прямоугольник с закругленными углами */}
+    <rect x="4" y="4" width="72" height="32" rx="4" fill="#0891b2" />
+
+    {/* Текст ГОСТ */}
+    <text
+      x="40"
+      y="20"
+      textAnchor="middle"
+      dominantBaseline="middle"
+      fill="white"
+      fontSize="16"
+      fontWeight="bold"
+      fontFamily="Arial, sans-serif"
+      letterSpacing="2"
+    >
+      ГОСТ
+    </text>
   </svg>
 )
 
@@ -103,10 +138,10 @@ export default function LiderBetonPage() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      const navHeight = 80 // высота навигационной панели
+      const navHeight = 80
       const elementRect = element.getBoundingClientRect()
       const absoluteElementTop = elementRect.top + window.pageYOffset
-      const targetPosition = Math.max(0, absoluteElementTop - navHeight) // Убедимся что позиция не отрицательная
+      const targetPosition = Math.max(0, absoluteElementTop - navHeight)
 
       window.scrollTo({
         top: targetPosition,
@@ -126,13 +161,7 @@ export default function LiderBetonPage() {
     {
       id: "gost",
       title: "Соблюдение требований и норм ГОСТа",
-      icon: ({ className }: { className?: string }) => (
-        <div
-          className={`${className} flex items-center justify-center font-bold text-base bg-accent text-white rounded px-3 py-2`}
-        >
-          ГОСТ
-        </div>
-      ),
+      icon: GostIcon,
       description:
         "Все смеси сертифицированы. Аттестованная лаборатория осуществляет контроль качества продукции. Благодаря профессионализму специалистов достигается высочайший уровень технологий, позволяющий получать композиционный материал с заранее заданными уникальными свойствами. Экспертная группа завода тщательно подходят к выбору сырья и химических добавок, предоставляющих возможность производить бетон самого высокого качества.",
     },
@@ -214,68 +243,26 @@ export default function LiderBetonPage() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Лидер Бетон",
-    description:
-      "Производство и доставка бетона всех марок в Каневской. Бетонный завод с собственным автопарком миксеров и бетонососов.",
-    url: "https://lider-beton.vercel.app",
-    telephone: "+7-918-360-10-10",
-    email: "lider360@bk.ru",
+    name: "ЛидерБетон360",
     address: {
       "@type": "PostalAddress",
+      addressLocality: "станица Каневская",
+      addressRegion: "Краснодарский край",
       streetAddress: "ул. Широкая, д. 247",
-      addressLocality: "ст. Каневская",
       addressCountry: "RU",
     },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "46.0833",
-      longitude: "38.9167",
-    },
+    telephone: "+7-918-360-10-10",
+    email: "lider360@bk.ru",
+    areaServed: "Краснодарский край",
+    description: "Производство и доставка бетона в станице Каневской и по Краснодарскому краю.",
+    url: "https://liderbeton360.ru",
     openingHours: "Mo-Sa 08:00-18:00",
     priceRange: "$$",
-    areaServed: "Каневская и окрестности до 90 км",
-    serviceType: "Производство и доставка бетона",
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Бетон и строительные материалы",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product",
-            name: "Товарный бетон всех марок (М100, М150, М200, М250, М300, М350)",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product",
-            name: "Цементный раствор для кладки и штукатурки",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product",
-            name: "Фундаментные блоки ФБС",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Product",
-            name: "Щебень и песок с доставкой",
-          },
-        },
-      ],
-    },
   }
 
   return (
     <div className="min-h-screen bg-background">
-      <Head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      </Head>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
       {/* Navigation */}
       <nav
@@ -287,7 +274,7 @@ export default function LiderBetonPage() {
             <div className="flex items-center">
               <img
                 src="/images/lider-beton-logo-header.png"
-                alt="Лидер Бетон - Бетонный завод в Каневской"
+                alt="Лидер Бетон - Производство бетона в Каневской"
                 className="h-6 md:h-8 w-auto"
               />
             </div>
@@ -317,10 +304,10 @@ export default function LiderBetonPage() {
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-accent" />
               <a
-                href="tel:89183601010"
+                href="tel:+79183601010"
                 className="text-accent font-semibold hover:text-accent/80 transition-colors text-sm md:text-base whitespace-nowrap"
               >
-                8 (918) 360-10-10
+                +7 (918) 360-10-10
               </a>
             </div>
           </div>
@@ -340,7 +327,7 @@ export default function LiderBetonPage() {
           <div className="flex items-center justify-center mb-6 gap-4">
             <img
               src="/images/lider-beton-logo-new.png"
-              alt="Лидер Бетон - Производство бетона в Каневской"
+              alt="ЛидерБетон360 - Бетонный завод в станице Каневской"
               className="h-22 md:h-32 w-auto"
             />
             <h1
@@ -351,11 +338,13 @@ export default function LiderBetonPage() {
                 textShadow: "0 0 8px rgba(30, 58, 138, 0.5)",
               }}
             >
-              ЛИДЕР БЕТОН
+              Производство и доставка бетона в станице Каневской
             </h1>
           </div>
           <p className="text-base md:text-2xl mb-2 max-w-4xl text-pretty leading-relaxed drop-shadow-md font-bold text-center mx-auto">
-            Ведущий производитель бетона для тех, кто ценит качество
+            Ведущий производитель бетонных смесей, ориентированный на строительный рынок Каневского района + 90 км. Мы
+            предлагаем качественный бетон на выгодных условиях, долгосрочное сотрудничество и гарантию качества всей
+            поставляемой продукции.
           </p>
 
           <h3 className="text-xl md:text-3xl font-bold mb-4 text-white bg-black/50 backdrop-blur-sm rounded-lg px-6 py-3 inline-block shadow-lg">
@@ -376,7 +365,7 @@ export default function LiderBetonPage() {
               onClick={() => scrollToSection("contact")}
             >
               <Phone className="mr-2 h-5 w-5" />
-              Позвонить нам
+              Заказать бетон в Каневской
             </Button>
           </div>
         </div>
@@ -425,7 +414,12 @@ export default function LiderBetonPage() {
       {/* Products Section */}
       <section id="products" className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">Наша продукция</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
+            Цены на бетон с доставкой в Каневской
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+            Рассчитайте стоимость бетона М300, М200 для фундамента прямо сейчас
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {products.map((product) => (
               <Card
@@ -436,7 +430,7 @@ export default function LiderBetonPage() {
                   <div className="mx-auto w-32 h-32 rounded-lg overflow-hidden mb-4 bg-gray-100 flex items-center justify-center">
                     <img
                       src={product.image || "/placeholder.svg"}
-                      alt={product.title}
+                      alt={`${product.title} с доставкой в Каневской`}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -452,7 +446,7 @@ export default function LiderBetonPage() {
                     Область применения
                   </Button>
                   <Button variant="default" className="w-full" onClick={() => scrollToSection("contact")}>
-                    Задать вопрос
+                    Заказать бетон
                   </Button>
                 </CardContent>
               </Card>
@@ -528,15 +522,17 @@ export default function LiderBetonPage() {
       {/* Contact Section */}
       <section id="contact" className="py-16 bg-muted">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">Контакты</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
+            Как заказать бетон с доставкой в Каневской?
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+            Свяжитесь с нами любым удобным способом, и мы поможем подобрать нужную марку бетона
+          </p>
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold mb-6">Свяжитесь с нами</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <input type="hidden" name="_to" value="lider360@bk.ru" />
-                  <input type="hidden" name="_subject" value="Новая заявка с сайта Лидер Бетон" />
-                  <input type="hidden" name="_next" value="https://lider-beton.vercel.app" />
                   <div>
                     <Label htmlFor="name">Имя *</Label>
                     <Input
@@ -600,34 +596,9 @@ export default function LiderBetonPage() {
                     </div>
                   )}
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    style={{
-                      width: "100%",
-                      padding: "12px 24px",
-                      backgroundColor: isSubmitting ? "#9ca3af" : "#1e40af",
-                      color: "#ffffff",
-                      border: "none",
-                      borderRadius: "6px",
-                      fontSize: "14px",
-                      fontWeight: "500",
-                      cursor: isSubmitting ? "not-allowed" : "pointer",
-                      transition: "background-color 0.2s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!isSubmitting) {
-                        e.currentTarget.style.backgroundColor = "#1d4ed8"
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isSubmitting) {
-                        e.currentTarget.style.backgroundColor = "#1e40af"
-                      }
-                    }}
-                  >
+                  <Button type="submit" disabled={isSubmitting} className="w-full">
                     {isSubmitting ? "Отправляется..." : "Отправить сообщение"}
-                  </button>
+                  </Button>
                 </form>
               </div>
 
@@ -640,8 +611,8 @@ export default function LiderBetonPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg">Телефон</h4>
-                      <a href="tel:89183601010" className="text-accent hover:text-accent/80 transition-colors text-lg">
-                        8 (918) 360-10-10
+                      <a href="tel:+79183601010" className="text-accent hover:text-accent/80 transition-colors text-lg">
+                        +7 (918) 360-10-10
                       </a>
                     </div>
                   </div>
@@ -677,7 +648,11 @@ export default function LiderBetonPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg">Адрес</h4>
-                      <p className="text-muted-foreground">Россия, ст. Каневская, ул. Широкая, д. 247</p>
+                      <p className="text-muted-foreground">
+                        Станица Каневская, Краснодарский край
+                        <br />
+                        ул. Широкая, д. 247
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -700,13 +675,13 @@ export default function LiderBetonPage() {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                title="Карта расположения Лидер Бетон - производство бетона"
+                title="Карта расположения ЛидерБетон360 - производство бетона в Каневской"
               />
             </div>
             <div className="text-center mt-6">
               <p className="text-muted-foreground flex items-center justify-center">
                 <MapPin className="mr-2 h-5 w-5" />
-                ЛИДЕР БЕТОН - Россия, ст. Каневская, ул. Широкая, д. 247
+                ЛидерБетон360 - Станица Каневская, Краснодарский край, ул. Широкая, д. 247
               </p>
             </div>
           </div>
@@ -716,14 +691,15 @@ export default function LiderBetonPage() {
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="mb-4 md:mb-0">
-              <p>&copy; 2024 Лидер Бетон. Все права защищены.</p>
+              <p>&copy; 2025 ЛидерБетон360. Все права защищены.</p>
+              <p className="text-sm mt-2">Станица Каневская, Краснодарский край</p>
             </div>
             <div className="flex items-center space-x-4">
               <Phone className="h-5 w-5" />
-              <a href="tel:89183601010" className="hover:text-accent transition-colors">
-                8 (918) 360-10-10
+              <a href="tel:+79183601010" className="hover:text-accent transition-colors">
+                +7 (918) 360-10-10
               </a>
             </div>
           </div>
