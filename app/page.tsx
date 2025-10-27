@@ -18,20 +18,18 @@ const ConcreteMixerIcon = ({ className }: { className?: string }) => (
     className={className}
     aria-label="Автомобиль-бетономешалка для доставки бетона в Каневской"
   >
-    {/* Упрощенный силуэт бетономешалки без фонового круга */}
+    {/* Упрощенный минималистичный силуэт бетономешалки */}
     {/* Кабина */}
     <rect x="8" y="28" width="12" height="14" rx="1" fill="currentColor" />
     <rect x="10" y="30" width="3" height="4" fill="white" opacity="0.3" />
-    <rect x="15" y="30" width="3" height="4" fill="white" opacity="0.3" />
 
-    {/* Барабан - упрощенная овальная форма */}
-    <ellipse cx="40" cy="32" rx="18" ry="14" fill="currentColor" opacity="0.9" />
+    {/* Барабан - простая овальная форма */}
+    <ellipse cx="38" cy="35" rx="18" ry="14" fill="currentColor" opacity="0.9" />
 
-    {/* Спиральные полосы на барабане */}
-    <path d="M 24 32 Q 40 28 56 32" stroke="white" strokeWidth="2" opacity="0.3" fill="none" strokeLinecap="round" />
-    <path d="M 26 36 Q 40 34 54 36" stroke="white" strokeWidth="1.5" opacity="0.2" fill="none" strokeLinecap="round" />
+    {/* Спиральная полоса на барабане */}
+    <path d="M 22 35 Q 38 32 54 35" stroke="white" strokeWidth="2" opacity="0.3" fill="none" strokeLinecap="round" />
 
-    {/* Рама/шасси */}
+    {/* Рама */}
     <line x1="8" y1="42" x2="56" y2="42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
 
     {/* Колеса */}
@@ -41,8 +39,8 @@ const ConcreteMixerIcon = ({ className }: { className?: string }) => (
     <circle cx="46" cy="48" r="5" fill="currentColor" />
     <circle cx="46" cy="48" r="2.5" fill="white" opacity="0.3" />
 
-    {/* Желоб для выгрузки */}
-    <path d="M 52 36 L 58 42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    {/* Желоб */}
+    <path d="M 52 38 L 58 44" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
   </svg>
 )
 
@@ -54,20 +52,20 @@ const GostIcon = ({ className }: { className?: string }) => (
     className={className}
     aria-label="ГОСТ сертификация бетона"
   >
-    {/* Бирюзовый прямоугольник с закругленными углами - увеличен для лучшей читаемости */}
-    <rect x="10" y="20" width="44" height="24" rx="4" fill="#0891b2" />
+    {/* Бирюзовый прямоугольник с закругленными углами - центрирован в viewBox с одинаковыми отступами */}
+    <rect x="4" y="16" width="56" height="32" rx="6" fill="#0891b2" />
 
-    {/* Текст ГОСТ - увеличен размер шрифта */}
+    {/* Текст ГОСТ - центрирован с одинаковыми отступами */}
     <text
       x="32"
       y="32"
       textAnchor="middle"
       dominantBaseline="middle"
       fill="white"
-      fontSize="14"
+      fontSize="18"
       fontWeight="bold"
       fontFamily="Arial, sans-serif"
-      letterSpacing="1.5"
+      letterSpacing="2"
     >
       ГОСТ
     </text>
@@ -199,7 +197,7 @@ export default function LiderBetonPage() {
     {
       id: "m250",
       title: "Бетон М250",
-      specs: "В20 П4 F1OO W2 ГОСТ 7473-2010",
+      specs: "В20 П4 F100 W2 ГОСТ 7473-2010",
       image: "/images/concrete-m250.png",
       description:
         "М250 положительные качества этого бетона полностью реализуются при проведении таких работ, как:\nзаливка фундаментов для многоэтажных зданий. Конечно, если строго принимать во внимание требования нормативных актов, необходимо использовать бетон более высокой марки. Однако, в случаях ограниченного бюджета, М250 вполне подойдет – его применение не снизит эксплуатационных качеств постройки;\nизготовление элементов зданий, плит или блоков. При использовании готовых конструкций подобного типа можно значительно ускорить строительство;\nпокрытие дорожек или площадок. Бетон В20 имеет крайне высокие показатели износостойкости и сопротивления воздействиям окружающей среды.\nЕсли возникла необходимость в проведении одной из вышеназванных работ, приобрести подходящий тип раствора можно в нашей компании. Цена бетона М-250 с доставкой приятно удивит любого покупателя.",
@@ -404,7 +402,7 @@ export default function LiderBetonPage() {
       {/* Products Section */}
       <section id="products" className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Прайс-лист</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Наша продукция</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
             Рассчитайте стоимость бетона М300, М200 для фундамента прямо сейчас
           </p>
@@ -521,6 +519,9 @@ export default function LiderBetonPage() {
               <div>
                 <h3 className="text-xl font-semibold mb-6">Свяжитесь с нами</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  <input type="hidden" name="_subject" value="Новая заявка с сайта" />
+                  <input type="hidden" name="_replyto" value="lider360@bk.ru" />
+
                   <div>
                     <Label htmlFor="name">Имя *</Label>
                     <Input
