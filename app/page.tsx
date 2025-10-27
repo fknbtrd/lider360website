@@ -18,66 +18,56 @@ const ConcreteMixerIcon = ({ className }: { className?: string }) => (
     className={className}
     aria-label="Автомобиль-бетономешалка для доставки бетона в Каневской"
   >
-    {/* Светло-голубой круг фона */}
-    <circle cx="32" cy="32" r="28" fill="currentColor" opacity="0.15" />
-
-    {/* Упрощенный силуэт бетономешалки */}
+    {/* Упрощенный силуэт бетономешалки без фонового круга */}
     {/* Кабина */}
-    <path
-      d="M 12 36 L 12 42 L 20 42 L 20 36 Z"
-      fill="currentColor"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinejoin="round"
-    />
+    <rect x="8" y="28" width="12" height="14" rx="1" fill="currentColor" />
+    <rect x="10" y="30" width="3" height="4" fill="white" opacity="0.3" />
+    <rect x="15" y="30" width="3" height="4" fill="white" opacity="0.3" />
 
-    {/* Барабан - упрощенная форма */}
-    <ellipse cx="38" cy="32" rx="16" ry="12" fill="currentColor" opacity="0.9" />
+    {/* Барабан - упрощенная овальная форма */}
+    <ellipse cx="40" cy="32" rx="18" ry="14" fill="currentColor" opacity="0.9" />
 
-    {/* Спиральная полоса на барабане */}
-    <path
-      d="M 24 32 Q 38 28 52 32"
-      stroke="currentColor"
-      strokeWidth="2"
-      opacity="0.5"
-      fill="none"
-      strokeLinecap="round"
-    />
+    {/* Спиральные полосы на барабане */}
+    <path d="M 24 32 Q 40 28 56 32" stroke="white" strokeWidth="2" opacity="0.3" fill="none" strokeLinecap="round" />
+    <path d="M 26 36 Q 40 34 54 36" stroke="white" strokeWidth="1.5" opacity="0.2" fill="none" strokeLinecap="round" />
 
     {/* Рама/шасси */}
-    <line x1="12" y1="42" x2="52" y2="42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    <line x1="8" y1="42" x2="56" y2="42" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
 
-    {/* Колеса - упрощенные */}
-    <circle cx="16" cy="46" r="4" fill="currentColor" />
-    <circle cx="16" cy="46" r="2" fill="white" opacity="0.3" />
+    {/* Колеса */}
+    <circle cx="14" cy="48" r="5" fill="currentColor" />
+    <circle cx="14" cy="48" r="2.5" fill="white" opacity="0.3" />
 
-    <circle cx="44" cy="46" r="4" fill="currentColor" />
-    <circle cx="44" cy="46" r="2" fill="white" opacity="0.3" />
+    <circle cx="46" cy="48" r="5" fill="currentColor" />
+    <circle cx="46" cy="48" r="2.5" fill="white" opacity="0.3" />
+
+    {/* Желоб для выгрузки */}
+    <path d="M 52 36 L 58 42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
   </svg>
 )
 
 const GostIcon = ({ className }: { className?: string }) => (
   <svg
-    viewBox="0 0 80 40"
+    viewBox="0 0 64 64"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
     aria-label="ГОСТ сертификация бетона"
   >
-    {/* Бирюзовый прямоугольник с закругленными углами */}
-    <rect x="4" y="4" width="72" height="32" rx="4" fill="#0891b2" />
+    {/* Бирюзовый прямоугольник с закругленными углами - увеличен для лучшей читаемости */}
+    <rect x="10" y="20" width="44" height="24" rx="4" fill="#0891b2" />
 
-    {/* Текст ГОСТ */}
+    {/* Текст ГОСТ - увеличен размер шрифта */}
     <text
-      x="40"
-      y="20"
+      x="32"
+      y="32"
       textAnchor="middle"
       dominantBaseline="middle"
       fill="white"
-      fontSize="16"
+      fontSize="14"
       fontWeight="bold"
       fontFamily="Arial, sans-serif"
-      letterSpacing="2"
+      letterSpacing="1.5"
     >
       ГОСТ
     </text>
@@ -338,7 +328,7 @@ export default function LiderBetonPage() {
                 textShadow: "0 0 8px rgba(30, 58, 138, 0.5)",
               }}
             >
-              Производство и доставка бетона в станице Каневской
+              Лидер Бетон
             </h1>
           </div>
           <p className="text-base md:text-2xl mb-2 max-w-4xl text-pretty leading-relaxed drop-shadow-md font-bold text-center mx-auto">
@@ -414,9 +404,7 @@ export default function LiderBetonPage() {
       {/* Products Section */}
       <section id="products" className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
-            Цены на бетон с доставкой в Каневской
-          </h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Прайс-лист</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
             Рассчитайте стоимость бетона М300, М200 для фундамента прямо сейчас
           </p>
