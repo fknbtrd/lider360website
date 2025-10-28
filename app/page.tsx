@@ -250,6 +250,8 @@ export default function LiderBetonPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <h1 className="sr-only">Производство и доставка бетона в Каневской</h1>
+
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
       {/* Navigation */}
@@ -262,7 +264,7 @@ export default function LiderBetonPage() {
             <div className="flex items-center">
               <img
                 src="/images/lider-beton-logo-header.png"
-                alt="Лидер Бетон - Производство бетона в Каневской"
+                alt="Лидер Бетон - Производство и доставка бетона в Каневской"
                 className="h-6 md:h-8 w-auto"
               />
             </div>
@@ -309,16 +311,18 @@ export default function LiderBetonPage() {
           style={{
             backgroundImage: "url('/images/concrete-plant-bg-new.jpg')",
           }}
+          role="img"
+          aria-label="Бетонный завод в станице Каневской - производство бетона"
         />
         <div className="absolute inset-0 bg-blue-900/60" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="flex items-center justify-center mb-6 gap-4">
             <img
               src="/images/lider-beton-logo-new.png"
-              alt="ЛидерБетон360 - Бетонный завод в станице Каневской"
+              alt="ЛидерБетон360 - Производство бетона в станице Каневской"
               className="h-22 md:h-32 w-auto"
             />
-            <h1
+            <h2
               className="text-3xl sm:text-5xl md:text-8xl font-bold text-balance drop-shadow-lg leading-tight"
               style={{
                 filter:
@@ -327,22 +331,17 @@ export default function LiderBetonPage() {
               }}
             >
               Лидер Бетон
-            </h1>
+            </h2>
           </div>
-          <p className="text-base md:text-2xl mb-2 max-w-4xl text-pretty leading-relaxed drop-shadow-md font-bold text-center mx-auto">
-            Ведущий производитель бетонных смесей, ориентированный на строительный рынок Каневского района + 90 км. Мы
-            предлагаем качественный бетон на выгодных условиях, долгосрочное сотрудничество и гарантию качества всей
-            поставляемой продукции.
-          </p>
 
           <h3 className="text-xl md:text-3xl font-bold mb-4 text-white bg-black/50 backdrop-blur-sm rounded-lg px-6 py-3 inline-block shadow-lg">
             Информация о нас
           </h3>
 
-          <p className="text-base md:text-lg mb-8 max-w-4xl mx-auto text-pretty leading-relaxed drop-shadow-md">
-            Компания «ЛИДЕР» является производителем бетонных смесей, ориентированным на строительный рынок Каневского
-            района + 90 км. Мы предлагаем качественный бетон на выгодных условиях, долгосрочное сотрудничество и
-            гарантию качества всей поставляемой продукции.
+          <p className="text-base md:text-2xl mb-8 max-w-4xl text-pretty leading-relaxed drop-shadow-md font-bold text-center mx-auto">
+            Ведущий производитель бетонных смесей, ориентированный на строительный рынок Каневского района + 90 км. Мы
+            предлагаем качественный бетон на выгодных условиях, долгосрочное сотрудничество и гарантию качества всей
+            поставляемой продукции.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -362,9 +361,9 @@ export default function LiderBetonPage() {
       {/* Advantages Section */}
       <section id="advantages" className="py-16 bg-muted">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
+          <h3 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
             Наши преимущества
-          </h2>
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {advantages.map((advantage) => {
               const IconComponent = advantage.icon
@@ -402,7 +401,7 @@ export default function LiderBetonPage() {
       {/* Products Section */}
       <section id="products" className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Наша продукция</h2>
+          <h3 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Наша продукция</h3>
           <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
             Рассчитайте стоимость бетона М300, М200 для фундамента прямо сейчас
           </p>
@@ -416,7 +415,7 @@ export default function LiderBetonPage() {
                   <div className="mx-auto w-32 h-32 rounded-lg overflow-hidden mb-4 bg-gray-100 flex items-center justify-center">
                     <img
                       src={product.image || "/placeholder.svg"}
-                      alt={`${product.title} с доставкой в Каневской`}
+                      alt={`${product.title} - доставка бетона в Каневской`}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -508,9 +507,9 @@ export default function LiderBetonPage() {
       {/* Contact Section */}
       <section id="contact" className="py-16 bg-muted">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
+          <h3 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
             Как заказать бетон с доставкой в Каневской?
-          </h2>
+          </h3>
           <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
             Свяжитесь с нами любым удобным способом, и мы поможем подобрать нужную марку бетона
           </p>
@@ -651,10 +650,10 @@ export default function LiderBetonPage() {
         </div>
       </section>
 
-      {/* Map Section - Перенес карту в самый низ */}
+      {/* Map Section */}
       <section id="map" className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">Мы на карте</h2>
+          <h3 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">Мы на карте</h3>
           <div className="max-w-4xl mx-auto">
             <div className="bg-card rounded-lg overflow-hidden shadow-lg">
               <iframe
