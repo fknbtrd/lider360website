@@ -250,10 +250,6 @@ export default function LiderBetonPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <h1 className="sr-only">Производство и доставка бетона в Каневской</h1>
-
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-
       {/* Navigation */}
       <nav
         className="fixed top-0 w-full backdrop-blur-sm border-b border-border z-50"
@@ -322,7 +318,7 @@ export default function LiderBetonPage() {
               alt="ЛидерБетон360 - Производство бетона в станице Каневской"
               className="h-22 md:h-32 w-auto"
             />
-            <h2
+            <div
               className="text-3xl sm:text-5xl md:text-8xl font-bold text-balance drop-shadow-lg leading-tight"
               style={{
                 filter:
@@ -331,12 +327,16 @@ export default function LiderBetonPage() {
               }}
             >
               Лидер Бетон
-            </h2>
+            </div>
           </div>
 
-          <h3 className="text-xl md:text-3xl font-bold mb-4 text-white bg-black/50 backdrop-blur-sm rounded-lg px-6 py-3 inline-block shadow-lg">
+          <h2 className="text-xl md:text-3xl font-bold mb-4 text-white bg-black/50 backdrop-blur-sm rounded-lg px-6 py-3 inline-block shadow-lg">
             Информация о нас
-          </h3>
+          </h2>
+
+          <h1 className="text-2xl md:text-4xl font-bold mb-6 text-white drop-shadow-lg">
+            Производство бетона в Каневской и районе
+          </h1>
 
           <p className="text-base md:text-2xl mb-8 max-w-4xl text-pretty leading-relaxed drop-shadow-md font-bold text-center mx-auto">
             Ведущий производитель бетонных смесей, ориентированный на строительный рынок Каневского района + 90 км. Мы
@@ -361,9 +361,9 @@ export default function LiderBetonPage() {
       {/* Advantages Section */}
       <section id="advantages" className="py-16 bg-muted">
         <div className="container mx-auto px-4">
-          <h3 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
             Наши преимущества
-          </h3>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {advantages.map((advantage) => {
               const IconComponent = advantage.icon
@@ -401,7 +401,7 @@ export default function LiderBetonPage() {
       {/* Products Section */}
       <section id="products" className="py-16">
         <div className="container mx-auto px-4">
-          <h3 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Наша продукция</h3>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Наша продукция</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
             Рассчитайте стоимость бетона М300, М200 для фундамента прямо сейчас
           </p>
@@ -507,9 +507,9 @@ export default function LiderBetonPage() {
       {/* Contact Section */}
       <section id="contact" className="py-16 bg-muted">
         <div className="container mx-auto px-4">
-          <h3 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-4 text-primary">
             Как заказать бетон с доставкой в Каневской?
-          </h3>
+          </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
             Свяжитесь с нами любым удобным способом, и мы поможем подобрать нужную марку бетона
           </p>
@@ -598,7 +598,7 @@ export default function LiderBetonPage() {
                       <Phone className="h-6 w-6 text-accent" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg">Телефон</h4>
+                      <p className="font-semibold text-lg">Телефон</p>
                       <a href="tel:+79183601010" className="text-accent hover:text-accent/80 transition-colors text-lg">
                         +7 (918) 360-10-10
                       </a>
@@ -610,7 +610,7 @@ export default function LiderBetonPage() {
                       <Mail className="h-6 w-6 text-accent" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg">Email</h4>
+                      <p className="font-semibold text-lg">Email</p>
                       <a
                         href="mailto:lider360@bk.ru"
                         className="text-accent hover:text-accent/80 transition-colors text-lg"
@@ -625,7 +625,7 @@ export default function LiderBetonPage() {
                       <Clock className="h-6 w-6 text-accent" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg">Режим работы</h4>
+                      <p className="font-semibold text-lg">Режим работы</p>
                       <p className="text-muted-foreground">Пн - Сб: 8:00 - 18:00</p>
                     </div>
                   </div>
@@ -635,7 +635,7 @@ export default function LiderBetonPage() {
                       <MapPin className="h-6 w-6 text-accent" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-lg">Адрес</h4>
+                      <p className="font-semibold text-lg">Адрес</p>
                       <p className="text-muted-foreground">
                         Станица Каневская, Краснодарский край
                         <br />
@@ -653,7 +653,7 @@ export default function LiderBetonPage() {
       {/* Map Section */}
       <section id="map" className="py-16">
         <div className="container mx-auto px-4">
-          <h3 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">Мы на карте</h3>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-primary">Мы на карте</h2>
           <div className="max-w-4xl mx-auto">
             <div className="bg-card rounded-lg overflow-hidden shadow-lg">
               <iframe
